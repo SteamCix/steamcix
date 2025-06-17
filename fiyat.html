@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SteamCix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        /* Video Arka Plan */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5);
+        }
+
+        .blur-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(10px);
+            z-index: 1;
+        }
+
+        /* Kar Efekti */
+        .snow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+
+            100% {
+                transform: translateY(100vh) translateX(30px);
+            }
+        }
+
+        /* Ana İçerik */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 3;
+            max-width: 600px;
+            padding: 20px;
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .welcome {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .panel {
+            background-color: rgba(30, 30, 30, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            animation: slideIn 1.5s ease-in-out;
+            width: 100%;
+        }
+
+        .panel img {
+            width: 150px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #333;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: #555;
+            transform: scale(1.05);
+        }
+
+        .price-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s ease;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .price-list.active {
+            max-height: 2000px;
+            overflow-y: auto;
+        }
+
+        .price-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .price-list li {
+            margin-bottom: 15px;
+        }
+
+        /* Geri ok stili */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+
+        .back-button svg {
+            fill: white;
+            width: 20px;
+            height: 20px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Mobil Duyarlılık */
+        @media (max-width: 600px) {
+            .welcome {
+                font-size: 1.8rem;
+            }
+
+            .panel img {
+                width: 100px;
+            }
+
+            .button {
+                font-size: 1rem;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Geri Butonu -->
+    <div class="back-button" onclick="goBack()" title="Geri Dön">
+        <svg viewBox="0 0 24 24">
+            <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+        </svg>
+    </div>
+
+    <!-- Video Arka Plan -->
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="https://cdn.upvi.org/anonymous/gXpsFrc92usIOi9_1750191432.mp4" type="video/mp4" />
+            Tarayıcınız video desteğini desteklemiyor.
+        </video>
+    </div>
+    <div class="blur-overlay"></div>
+
+    <!-- Kar Efekti -->
+    <div class="snow" id="snowContainer"></div>
+
+    <!-- Ana İçerik -->
+    <div class="container">
+        <div class="welcome">Hoşgeldiniz - SteamCix Güvenli Oyun Alma Platformu</div>
+
+        <div class="panel">
+            <img src="https://i.hizliresim.com/ky6g3bl.jpg" alt="Logo" />
+            <button class="button" onclick="togglePriceList()">Fiyatlar</button>
+
+            <div class="price-list" id="priceList">
+                <h3>🎮 Oyun Fiyat Listesi 🎮</h3>
+                <p>🛒 Uygun fiyatlarla popüler oyunlar burada! Güncel fiyatlarımız aşağıdadır:</p>
+                <strong>Mevcut Oyunlar:</strong>
+                <ul>
+                    <li>🧟‍♂️ The Last of Us Part I – 120 TL</li>
+                    <li>🧟‍♂️ The Last of Us Part II – 120 TL</li>
+                    <li>🤠 Red Dead Redemption 2 – 95 TL</li>
+                </ul>
+                <strong>Diğer Popüler Oyunlar:</strong>
+                <ul>
+                    <li>⚔️ God of War Ragnarök – 120 TL</li>
+                    <li>🕷️ Spider-Man: Miles Morales – 75 TL</li>
+                    <li>🗡️ Elden Ring – 100 TL</li>
+                    <li>🧙‍♂️ Hogwarts Legacy – 140 TL</li>
+                    <li>🗡️ Assassin’s Creed Mirage – 85 TL</li>
+                    <li>🔫 Call of Duty: Modern Warfare III – 100 TL</li>
+                    <li>🦾 Cyberpunk 2077 – 125 TL</li>
+                    <li>⚽ FIFA 24 – 50 TL</li>
+                    <li>👹 Resident Evil 4 Remake – 160 TL</li>
+                    <li>🚗 GTA V: Premium Edition – 50 TL</li>
+                    <li>🕸️ Marvel’s Spider-Man Remastered – 75 TL</li>
+                    <li>✨ Star Wars Jedi: Survivor – 100 TL</li>
+                    <li>🗡️ Ghost of Tsushima: Director’s Cut – 90 TL</li>
+                </ul>
+                <p>📩 Sipariş ve detaylı bilgi için bana DM atabilirsiniz!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePriceList() {
+            var list = document.getElementById("priceList");
+            list.classList.toggle("active");
+
+            if (list.classList.contains("active")) {
+                list.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        }
+
+        function createSnowflake() {
+            const snowContainer = document.getElementById('snowContainer');
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.width = snowflake.style.height = (Math.random() * 5 + 3) + 'px';
+
+            snowContainer.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 10000);
+        }
+
+        setInterval(createSnowflake, 200);
+
+        function goBack() {
+            window.location.href = "https://steamcix.github.io/steamcix/steamcix.html";
+        }
+    </script>
+</body>
+
+</html>
