@@ -143,6 +143,63 @@
             transform: scale(1.05);
         }
 
+        /* Instagram Butonu */
+        .instagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            text-decoration: none;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            background-size: 300% 300%;
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s;
+            animation: instagramGradient 5s ease infinite;
+        }
+
+        @keyframes instagramGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .instagram img {
+            width: 30px;
+        }
+
+        .instagram:hover {
+            transform: scale(1.05);
+        }
+
+        /* YouTube Butonu */
+        .youtube {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #FF0000;
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .youtube img {
+            width: 30px;
+        }
+
+        .youtube:hover {
+            background-color: #cc0000;
+            transform: scale(1.05);
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -168,8 +225,6 @@
     <div class="container">
         <div class="welcome">Hoşgeldiniz - SteamCix Güvenli Oyun Alma Platformu</div>
 
-
-
         <div class="panel">
             <img src="https://i.hizliresim.com/ky6g3bl.jpg" alt="Logo">
             <button class="button" onclick="togglePriceList()">Fiyatlar</button>
@@ -179,34 +234,42 @@
                 <p>🛒 Uygun fiyatlarla popüler oyunlar burada! Güncel fiyatlarımız aşağıdadır:</p>
                 <strong>Mevcut Oyunlar:</strong>
                 <ul>
-    <li>🧟‍♂️ The Last of Us Part I – <s>350 TL</s> 👉 70 TL</li>
-    <li>🧟‍♂️ The Last of Us Part II – <s>350 TL</s> 👉 70 TL</li>
-    <li>🤠 Red Dead Redemption 2 – <s>250 TL</s> 👉 50 TL</li>
-</ul>
-<strong>Diğer Popüler Oyunlar:</strong>
-<ul>
-    <li>⚔️ God of War Ragnarök – <s>600 TL</s> 👉 120 TL</li>
-    <li>🕷️ Spider-Man: Miles Morales – <s>450 TL</s> 👉 90 TL</li>
-    <li>🗡️ Elden Ring – <s>500 TL</s> 👉 100 TL</li>
-    <li>🧙‍♂️ Hogwarts Legacy – <s>600 TL</s> 👉 120 TL</li>
-    <li>🗡️ Assassin’s Creed Mirage – <s>500 TL</s> 👉 100 TL</li>
-    <li>🔫 Call of Duty: Modern Warfare III – <s>650 TL</s> 👉 130 TL</li>
-    <li>🦾 Cyberpunk 2077 – <s>350 TL</s> 👉 70 TL</li>
-    <li>⚽ FIFA 24 – <s>450 TL</s> 👉 90 TL</li>
-    <li>👹 Resident Evil 4 Remake – <s>500 TL</s> 👉 100 TL</li>
-    <li>🚗 GTA V: Premium Edition – <s>145 TL</s> 👉 30 TL</li>
-    <li>🕸️ Marvel’s Spider-Man Remastered – <s>450 TL</s> 👉 90 TL</li>
-    <li>✨ Star Wars Jedi: Survivor – <s>600 TL</s> 👉 120 TL</li>
-    <li>🗡️ Ghost of Tsushima: Director’s Cut – <s>550 TL</s> 👉 110 TL</li>
-</ul>
-<p>📩 Sipariş ve detaylı bilgi için bana DM atabilirsiniz!</p>
-
+                    <li>🧟‍♂️ The Last of Us Part I – <s>350 TL</s> 👉 70 TL</li>
+                    <li>🧟‍♂️ The Last of Us Part II – <s>350 TL</s> 👉 70 TL</li>
+                    <li>🤠 Red Dead Redemption 2 – <s>250 TL</s> 👉 50 TL</li>
+                </ul>
+                <strong>Diğer Popüler Oyunlar:</strong>
+                <ul>
+                    <li>⚔️ God of War Ragnarök – <s>600 TL</s> 👉 120 TL</li>
+                    <li>🕷️ Spider-Man: Miles Morales – <s>450 TL</s> 👉 90 TL</li>
+                    <li>🗡️ Elden Ring – <s>500 TL</s> 👉 100 TL</li>
+                    <li>🧙‍♂️ Hogwarts Legacy – <s>600 TL</s> 👉 120 TL</li>
+                    <li>🗡️ Assassin’s Creed Mirage – <s>500 TL</s> 👉 100 TL</li>
+                    <li>🔫 Call of Duty: Modern Warfare III – <s>650 TL</s> 👉 130 TL</li>
+                    <li>🦾 Cyberpunk 2077 – <s>350 TL</s> 👉 70 TL</li>
+                    <li>⚽ FIFA 24 – <s>450 TL</s> 👉 90 TL</li>
+                    <li>👹 Resident Evil 4 Remake – <s>500 TL</s> 👉 100 TL</li>
+                    <li>🚗 GTA V: Premium Edition – <s>145 TL</s> 👉 30 TL</li>
+                    <li>🕸️ Marvel’s Spider-Man Remastered – <s>450 TL</s> 👉 90 TL</li>
+                    <li>✨ Star Wars Jedi: Survivor – <s>600 TL</s> 👉 120 TL</li>
+                    <li>🗡️ Ghost of Tsushima: Director’s Cut – <s>550 TL</s> 👉 110 TL</li>
+                </ul>
                 <p>📩 Sipariş ve detaylı bilgi için bana DM atabilirsiniz!</p>
             </div>
 
             <a class="discord" href="https://discord.gg/satis" target="_blank">
                 <img src="https://i.hizliresim.com/50wat7h.jpg" alt="Discord">
                 Discord
+            </a>
+
+            <a class="instagram" href="https://www.instagram.com/ornekprofil" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+                Instagram
+            </a>
+
+            <a class="youtube" href="https://www.youtube.com/@ornekkanal" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+                YouTube
             </a>
         </div>
     </div>
